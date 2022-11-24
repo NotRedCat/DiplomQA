@@ -28,7 +28,7 @@ public class TestBase {
                 "enableVideo", true
         ));
         String properties = System.getProperty("properties");
-        if (properties.equals("remote")) {
+
             System.setProperty("properties", "remote");
             DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
                 Configuration.remote = config.getRemoteURL();
@@ -38,7 +38,7 @@ public class TestBase {
             Configuration.browserSize = config.getBrowserSize();
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browserVersion = config.getBrowserVersion();
-        }
+
         }
 
 
