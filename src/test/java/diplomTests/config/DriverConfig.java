@@ -11,11 +11,11 @@ import org.aeonbits.owner.Config;
 public interface DriverConfig extends Config {
 
     @Key("baseUrl")
-    @DefaultValue("http://demowebshop.tricentis.com/")
+    @DefaultValue("https://www.dns-shop.ru/")
     String getBaseUrl();
 
     @Key("browser")
-    @DefaultValue("FIREFOX")
+    @DefaultValue("CHROME")
     String getBrowser();
 
     @Key("browserVersion")
@@ -30,7 +30,7 @@ public interface DriverConfig extends Config {
     String getRemoteURL();
 
     @Key("baseURI")
-    @DefaultValue("http://demowebshop.tricentis.com/")
+    @DefaultValue("https://reqres.in/api/users")
     String getBaseURI();
 
 }

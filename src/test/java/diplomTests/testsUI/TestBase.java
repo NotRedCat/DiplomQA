@@ -2,8 +2,10 @@ package diplomTests.testsUI;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import diplomTests.config.DriverConfig;
 import diplomTests.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -20,17 +22,23 @@ public class TestBase {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        if (System.getProperty("remote_url") != null) {
-            Configuration.remote = System.getProperty("remote_url");
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-        }
-
-        Configuration.browser = System.getProperty("browser_name", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-
         Configuration.browserCapabilities = capabilities;
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+
+        System.setProperty("properties", "remote");
+        DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
+
+        if (config.getRemoteURL() != null) {
+            Configuration.remote = config.getRemoteURL();
+        }
+        capabilities.setCapability("browserName", config.getBrowser());
+        capabilities.setCapability("baseURI", config.getBaseURI());
+        Configuration.browserSize = config.getBrowserSize();
+        Configuration.baseUrl = config.getBaseUrl();
+        Configuration.browserVersion = config.getBrowserVersion();
     }
 
 
@@ -39,9 +47,8 @@ public class TestBase {
         Attach.screenshotsAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        if (System.getProperty("remote_url") != null) {
-            Attach.addVideo();
-        }
-
+        Attach.addVideo();
     }
+
+
 }
