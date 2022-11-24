@@ -31,7 +31,7 @@ public class TestBase {
 
             System.setProperty("properties", "remote");
             DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
-                Configuration.remote = config.getRemoteURL();
+                Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
             capabilities.setCapability("browserName", config.getBrowser());
             capabilities.setCapability("baseURI", config.getBaseURI());
