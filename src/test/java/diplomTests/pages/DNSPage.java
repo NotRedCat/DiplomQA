@@ -1,9 +1,11 @@
 package diplomTests.pages;
 
+import diplomTests.testsUI.TestBase;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class DNSPage {
+public class DNSPage extends TestBase {
 
     private final static String TITLE_TEXT = "Актуальные предложения";
 
