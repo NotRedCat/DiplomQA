@@ -31,7 +31,7 @@ public class TestBase {
         System.setProperty("properties", "remote");
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
-        if (config.getRemoteURL() != null) {
+        if (config != null) {
             Configuration.remote = config.getRemoteURL();
         }
         capabilities.setCapability("browserName", config.getBrowser());
