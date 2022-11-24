@@ -27,19 +27,19 @@ public class TestBase {
                 "enableVNC", true,
                 "enableVideo", true
         ));
-        String properties = System.getProperty("properties");
 
-            System.setProperty("properties", "remote");
-            DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
-                Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        System.setProperty("properties", "remote");
+        DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
-            capabilities.setCapability("browserName", config.getBrowser());
-            capabilities.setCapability("baseURI", config.getBaseURI());
-            Configuration.browserSize = config.getBrowserSize();
-            Configuration.baseUrl = config.getBaseUrl();
-            Configuration.browserVersion = config.getBrowserVersion();
-
+        if (config.getRemoteURL() != null) {
+            Configuration.remote = config.getRemoteURL();
         }
+        capabilities.setCapability("browserName", config.getBrowser());
+        capabilities.setCapability("baseURI", config.getBaseURI());
+        Configuration.browserSize = config.getBrowserSize();
+        Configuration.baseUrl = config.getBaseUrl();
+        Configuration.browserVersion = config.getBrowserVersion();
+    }
 
 
     @AfterEach
