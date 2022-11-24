@@ -29,7 +29,7 @@ allure {
 
 dependencies {
     testImplementation(
-            'com.codeborne:selenide:6.10.0',
+            'com.codeborne:selenide:6.8.0',
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             'com.github.javafaker:javafaker:1.0.2',
