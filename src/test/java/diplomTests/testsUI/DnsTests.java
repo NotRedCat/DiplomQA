@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static diplomTests.testsUI.TestData.noEmail;
 import static io.qameta.allure.Allure.step;
 
-public class DnsTests{
+public class DnsTests {
 
     DNSPage mainPage = new DNSPage();
 
@@ -18,57 +18,69 @@ public class DnsTests{
 
         step("Проверка, что в избранном пусто", () ->
                 mainPage
-                .openWishList()
-                .checkWishlistIsEmpty());
+                        .openWishList()
+                        .checkWishlistIsEmpty());
         step("Добавление товара в избранное", () ->
-        mainPage
-                .addProductInWishlist());
-                step("Проверка, что в избранном появился товар", () ->
-        mainPage
-                .checkWishlistIsNotEmpty());
+                mainPage
+                        .addProductInWishlist());
+        step("Проверка, что в избранном появился товар", () ->
+                mainPage
+                        .checkWishlistIsNotEmpty());
     }
 
     @Test
     void checkAuthWithWrongEmail() {
-        mainPage.openMainPage();
-        $(".user-profile__login").click();
-        $(".user-profile__login-icon").hover();
-        $(".user-profile__wrapper button").click();
-        $(".auth-modal input").click();
-        $(".auth-modal input").sendKeys(noEmail);
-        $$(".auth-modal button").find(text("Получить код")).click();
-        $(".error-message-block").shouldHave(text("E-mail/телефон указан неверно"));
+        step("Переход к форме авторизации", () ->
+                mainPage.openMainPage()
+                        .goToAuth());
+
+        step("Ввод некорректного емайла", () ->
+                mainPage.enterInvalidEmail());
+
+        step("Проверка, что появилось сообщение об ошибке", () ->
+                mainPage.checkingAuthError());
     }
 
     @Test
     void aboutCompanyShouldHaveText() {
-        open("https://www.dns-shop.ru/about/about/");
-        $(".about-dns__top-title")
-                .shouldHave(text("DNS – один из лидеров рынка по продаже цифровой и бытовой техники в России"));
+        step("Открытие страницы 'О компании'", () ->
+                mainPage.openAboutCompany());
+
+        step("Проверка, что на странице есть текст", () ->
+                mainPage.checkingAboutCompanyNoEmpty());
     }
 
     @Test
     void checkSmartSearch() {
-        mainPage.openMainPage();
-        $("#header-search input").hover().click();
-        $("#header-search input").setValue("Sumsang");
-        $$(".ui-input-search a").shouldBe(CollectionCondition.sizeGreaterThan(0));
+        step("Открытие главной страницы", () ->
+        mainPage.openMainPage());
+        step("Поиск по названию с ошибками", () ->
+        mainPage.searchInvalidModelName());
+        step("Результатов поиска больше нуля", () ->
+        mainPage.listNoEmpty());
     }
 
     @Test
     void checkClickLogo() {
-        open("https://www.dns-shop.ru/catalog/17aa280216404e77/akkumulyatory-dlya-elektroinstrumentov/");
-        executeJavaScript("$('.v-confirm-city').remove()");
-        $(".logo").click();
-        $(".homepage-actual-offers-main__title").shouldHave(text("Актуальные предложения"));
+        step("Открытие раздела", () ->
+        mainPage.openSection());
+        step("Нажатие на логотип", () ->
+        mainPage.clickOnTheLogo());
+        step("Переход на главную страницы'", () ->
+        mainPage.checkingGoToMainPage());
     }
 
     @Test
     void checkTheTransitionToVk() {
-        mainPage.openMainPage();
-        $(".social__vkontakte").click();
-        switchTo().window(1);
-        $(".page_name").shouldHave(text("Сеть магазинов DNS"));
+        step("Открытие главной страницы", () ->
+        mainPage.openMainPage());
+
+        step("Переход в ВК", () ->
+        mainPage.openVk());
+
+        step("Проверка, что открылась официальная страница DNS", () ->
+        mainPage.checkingGoToVkDnsPage());
+
     }
 }
 
