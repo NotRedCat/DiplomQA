@@ -30,18 +30,19 @@ public class TestBase {
 
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
-
-        if (System.getProperty("remote_url") != null) {
-
+        String properties = System.getProperty("properties");
+        if (properties.equals("remote"))
+        {
             Configuration.browser = System.getProperty("browser_name");
             Configuration.browserVersion = System.getProperty("browser_version");
             Configuration.browserSize = System.getProperty("browser_size");
-            Configuration.remote = System.getProperty("remote_url");
-        } else {
-            capabilities.setCapability("browserName", "chrome");
-            capabilities.setCapability("browserVersion", "100.0");
-            Configuration.browserSize = "1800x1200";
-
+            Configuration.remote = config.getRemoteURL();
+        }
+        if (properties.equals("local"))
+    {
+        Configuration.browser = config.getBrowser();
+        Configuration.browserVersion = config.getBrowserVersion();
+        Configuration.browserSize = config.getBrowserSize();
 
         }
     }
