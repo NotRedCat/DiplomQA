@@ -26,7 +26,7 @@ public class DnsTests extends TestBase{
     }
 
     @Test
-    @DisplayName("Проверка, что при авторизии с неверными логином и паролем, возникает ошибка")
+    @DisplayName("Проверка, что при авторизии с неверными емейлом, возникает ошибка")
     void checkAuthWithWrongEmail() {
         step("Переход к форме авторизации", () ->
                 mainPage.openMainPage()
