@@ -1,6 +1,7 @@
 package diplomTests.testsUI;
 
 import diplomTests.pages.DNSPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 
@@ -9,6 +10,7 @@ public class DnsTests extends TestBase{
     DNSPage mainPage = new DNSPage();
 
     @Test
+    @DisplayName("Проверка, что при добавлении товара в избранное, счётчик меняется")
     void checkAddProductToWishlist() {
 
         step("Проверка, что в избранном пусто", () ->
@@ -24,6 +26,7 @@ public class DnsTests extends TestBase{
     }
 
     @Test
+    @DisplayName("Проверка, что при авторизии с неверными логином и паролем, возникает ошибка")
     void checkAuthWithWrongEmail() {
         step("Переход к форме авторизации", () ->
                 mainPage.openMainPage()
@@ -37,6 +40,7 @@ public class DnsTests extends TestBase{
     }
 
     @Test
+    @DisplayName("Проверка, что в разделе о компании есть текст")
     void aboutCompanyShouldHaveText() {
         step("Открытие страницы 'О компании'", () ->
                 mainPage.openAboutCompany());
@@ -46,6 +50,7 @@ public class DnsTests extends TestBase{
     }
 
     @Test
+    @DisplayName("Проверка умного поиска")
     void checkSmartSearch() {
         step("Открытие главной страницы", () ->
         mainPage.openMainPage());
@@ -56,16 +61,18 @@ public class DnsTests extends TestBase{
     }
 
     @Test
+    @DisplayName("Проверка, что при клике на логотип, открывается начальная страница")
     void checkClickLogo() {
         step("Открытие раздела", () ->
         mainPage.openSection());
         step("Нажатие на логотип", () ->
         mainPage.clickOnTheLogo());
-        step("Переход на главную страницы'", () ->
+        step("Проверка, что произошел переход на главную страницы", () ->
         mainPage.checkingGoToMainPage());
     }
 
     @Test
+    @DisplayName("Проверка, что при переходе в ВК, открывается официальная страница DNS")
     void checkTheTransitionToVk() {
         step("Открытие главной страницы", () ->
         mainPage.openMainPage());
