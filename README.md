@@ -82,7 +82,9 @@ UI тесты сайта https://reqres.in/
 
 ### :rocket: Jenkins:
 ---
+
 https://jenkins.autotests.cloud/job/DiplomJenkins/
+
 
 ### :chart_with_upwards_trend: Allure отчет :
 ---
