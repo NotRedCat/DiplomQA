@@ -86,4 +86,10 @@ https://jenkins.autotests.cloud/job/DiplomJenkins/
 
 ### :chart_with_upwards_trend: Allure отчет :
 ---
+![repoprt1](https://user-images.githubusercontent.com/90265199/204030005-ee386982-080a-40b8-8f53-2f5493ca0b1d.png)
+
+![report3](https://user-images.githubusercontent.com/90265199/204030047-7471c495-efac-4252-a043-749b2666cd67.png)
+
+https://user-images.githubusercontent.com/90265199/204030069-267e1255-0a61-4fbb-bdb1-6fc3919a1519.mp4
+
 
