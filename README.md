@@ -16,7 +16,7 @@
 
   - Выполняемые проверки
 
-- Как запустить тесты из терминала
+- Jenkins
 
 - Allure отчет
 
@@ -44,44 +44,31 @@
 UI тесты сайта https://www.dns-shop.ru/
 ### :bookmark_tabs: Выполняемые проверки:
 ---
+<div>
 :white_check_mark: Проверка, что при авторизии с неверными логином и паролем, возникает ошибка
 :white_check_mark: Проверка, что при добавлении товара в избранное, счётчик меняется
 :white_check_mark: Проверка умного поиска
 :white_check_mark: Проверка, что в разделе о компании есть текст
 :white_check_mark: Проверка, что при клике на логотип, открывается начальная страница
 :white_check_mark: Проверка, что при переходе в ВК, открывается официальная страница DNS
+</div>
 
 ## :bookmark_tabs: API тесты:
 UI тесты сайта https://reqres.in/
 ### :bookmark_tabs: Выполняемые проверки:
 ---
+<div>
 :white_check_mark: Получение информации о пользователе
 :white_check_mark: Поиск не существующего пользователя
 :white_check_mark: Создание нового пользователя
 :white_check_mark: Создание пустого пользователя
 :white_check_mark: Изменение существующего пользователя
 :white_check_mark: Удаление пользователя
+</div>
 
-### :rocket: Как запустить тесты :
+### :rocket: Jenkins:
 ---
-- Запустить в эмуляторе
-
-1) Запустить в AndroidStudio эмулятор Pixel 4
-2) Запусть Appium сервер
-3) Ввести в командную строку терминала команду
-```javascript
-gradle clean test -DdeviceHost=local
-```
-
-- Запустить на реальном устройстве
-1) Подключить реальное устройство для отладки
-2) Запусть Appium сервер
-3) Изменить в файле realMobile.properties значения переменных device и os_version, на параметры вашего реального устройства
-4) Ввести в командную строку терминала команду
-
-```javascript
-gradle clean test -DdeviceHost=real
-```
+https://jenkins.autotests.cloud/job/DiplomJenkins/
 
 ### :chart_with_upwards_trend: Allure отчет :
 ---
