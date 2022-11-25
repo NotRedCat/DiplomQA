@@ -28,12 +28,13 @@ public class TestBase {
                 "enableVideo", true
         ));
 
-        System.setProperty("properties", "remote");
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
-        if (config.getRemoteURL() != null) {
+        if (System.getProperty("remote_url") != null) {
             Configuration.remote = config.getRemoteURL();
-        }
+            System.setProperty("properties", "remote");
+        } else System.setProperty("properties", "local");
+
         capabilities.setCapability("browserName", config.getBrowser());
         capabilities.setCapability("baseURI", config.getBaseURI());
         Configuration.browserSize = config.getBrowserSize();
@@ -47,7 +48,7 @@ public class TestBase {
         Attach.screenshotsAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-    //    Attach.addVideo();
+        Attach.addVideo();
     }
 
 
