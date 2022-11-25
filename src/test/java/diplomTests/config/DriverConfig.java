@@ -4,7 +4,7 @@ package diplomTests.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${properties}.properties"
+        "classpath:${remote}.properties"
 
 })
 

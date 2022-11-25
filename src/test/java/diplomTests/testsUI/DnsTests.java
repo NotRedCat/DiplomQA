@@ -1,12 +1,7 @@
 package diplomTests.testsUI;
 
-import com.codeborne.selenide.CollectionCondition;
 import diplomTests.pages.DNSPage;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-import static diplomTests.testsUI.TestData.noEmail;
 import static io.qameta.allure.Allure.step;
 
 public class DnsTests {
