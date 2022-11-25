@@ -18,8 +18,8 @@ public class TestBase {
 
     @BeforeAll
     static void configure() throws MalformedURLException {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         Configuration.browserCapabilities = capabilities;
@@ -30,18 +30,21 @@ public class TestBase {
 
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
+
         if (System.getProperty("remote_url") != null) {
-            Configuration.remote = config.getRemoteURL();
-            System.setProperty("properties", "remote");
-        } else System.setProperty("properties", "local");
 
-        capabilities.setCapability("browserName", config.getBrowser());
-        capabilities.setCapability("baseURI", config.getBaseURI());
-        Configuration.browserSize = config.getBrowserSize();
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browserVersion = config.getBrowserVersion();
+            Configuration.browser = System.getProperty("browser_name");
+            Configuration.browserVersion = System.getProperty("browser_version");
+            Configuration.browserSize = System.getProperty("browser_size");
+            Configuration.remote = System.getProperty("remote_url");
+        } else {
+            capabilities.setCapability("browserName", "chrome");
+            capabilities.setCapability("browserVersion", "100.0");
+            Configuration.browserSize = "1800x1200";
+
+
+        }
     }
-
 
     @AfterEach
     void addAttachments() {
@@ -50,6 +53,4 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
-
-
 }
