@@ -12,7 +12,6 @@ public class DNSPage extends TestBase {
     private final static String TITLE_TEXT = "Актуальные предложения";
 
 
-
     public DNSPage openMainPage() {
         open("https://www.dns-shop.ru");
         $(".homepage-actual-offers-main__title").shouldHave(text(TITLE_TEXT));
@@ -20,41 +19,49 @@ public class DNSPage extends TestBase {
         executeJavaScript("$('#fixedban').remove()");
         return this;
     }
+
     public DNSPage openWishList() {
         open("https://www.dns-shop.ru/profile/wishlist/");
         return this;
     }
+
     public DNSPage clickWishlist() {
         $(".wishlist-link__lbl").click();
         return this;
     }
+
     public DNSPage checkWishlistIsEmpty() {
         String emptyWishlistText = "В списке пока нет ни одного избранного товара";
         $(".profile-wishlist__empty-text").shouldHave(text(emptyWishlistText));
         return this;
     }
+
     public DNSPage addProductInWishlist() {
         open("https://www.dns-shop.ru/catalog/17a8a05316404e77/planshety/");
         $$(".catalog-product__name").first().click();
         $$(".wishlist-btn").first().click();
         return this;
     }
+
     public DNSPage checkWishlistIsNotEmpty() {
         $(".wishlist-link__badge").shouldHave(text("1"));
         return this;
     }
+
     public DNSPage goToAuth() {
         $(".user-profile__login").click();
         $(".user-profile__login-icon").hover();
         $(".user-profile__wrapper button").click();
         return this;
     }
+
     public DNSPage enterInvalidEmail() {
         $(".auth-modal input").click();
         $(".auth-modal input").sendKeys(noEmail);
         $$(".auth-modal button").find(text("Получить код")).click();
         return this;
     }
+
     public DNSPage checkingAuthError() {
         $(".error-message-block").shouldHave(text("E-mail/телефон указан неверно"));
         return this;
@@ -76,6 +83,7 @@ public class DNSPage extends TestBase {
         $("#header-search input").setValue("Sumsang");
         return this;
     }
+
     public DNSPage listNoEmpty() {
         $$(".ui-input-search a").shouldBe(CollectionCondition.sizeGreaterThan(0));
         return this;
@@ -91,6 +99,7 @@ public class DNSPage extends TestBase {
         $(".logo").click();
         return this;
     }
+
     public DNSPage checkingGoToMainPage() {
         $(".homepage-actual-offers-main__title").shouldHave(text("Актуальные предложения"));
         return this;
@@ -101,6 +110,7 @@ public class DNSPage extends TestBase {
         switchTo().window(1);
         return this;
     }
+
     public DNSPage checkingGoToVkDnsPage() {
         $(".page_name").shouldHave(text("Сеть магазинов DNS"));
         return this;
