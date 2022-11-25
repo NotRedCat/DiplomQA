@@ -4,7 +4,7 @@ import diplomTests.pages.DNSPage;
 import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 
-public class DnsTests {
+public class DnsTests extends TestBase{
 
     DNSPage mainPage = new DNSPage();
 
