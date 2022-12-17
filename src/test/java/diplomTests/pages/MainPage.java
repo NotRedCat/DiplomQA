@@ -97,7 +97,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage clickOnTheLogo() {
-        $(".logo").click();
+        $("header-bottom__logo").click();
         return this;
     }
 
