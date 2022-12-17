@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class TestBase {
 
+    String emptyWishlistText = "В списке пока нет ни одного избранного товара";
+
     @BeforeAll
     static void configure() throws MalformedURLException {
 
