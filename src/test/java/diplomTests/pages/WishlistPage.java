@@ -18,7 +18,7 @@ public class WishlistPage {
     public WishlistPage addProductInWishlist() {
         open("/catalog/17a8a05316404e77/planshety/");
         sleep(1500);
-        $(".wishlist-btn").hover().click();
+        $(".wishlist-btn").click();
         return this;
     }
 
