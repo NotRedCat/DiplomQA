@@ -27,20 +27,23 @@ public class TestBase {
 
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
+            String host = System.getProperty("host");
+            if (host.equals("remote")) {
+                Configuration.remote = config.getRemoteURL();
+                capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                        "enableVNC", true,
+                        "enableVideo", true
+                ));
+            } else {
+                capabilities.setCapability("browserName", config.getBrowser());
+                capabilities.setCapability("baseURI", config.getBaseURI());
+                Configuration.browserSize = config.getBrowserSize();
+                Configuration.baseUrl = config.getBaseUrl();
+                Configuration.browserVersion = config.getBrowserVersion();
+            }
 
-        if (System.getProperty("remote_url") != null) {
-            Configuration.remote = config.getRemoteURL();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
         }
-        capabilities.setCapability("browserName", config.getBrowser());
-        capabilities.setCapability("baseURI", config.getBaseURI());
-        Configuration.browserSize = config.getBrowserSize();
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browserVersion = config.getBrowserVersion();
-    }
+
 
 
     @AfterEach
