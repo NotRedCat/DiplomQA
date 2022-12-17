@@ -40,7 +40,7 @@ public class MainPage extends TestBase {
         open("/catalog/17a8a05316404e77/planshety/");
         $$(".catalog-product__name").first().click();
         sleep(300);
-        $(".button-ui.wishlist-btn").click();
+        $(".button-ui.button-ui_white.button-ui_icon.wishlist-btn").click();
         return this;
     }
 
