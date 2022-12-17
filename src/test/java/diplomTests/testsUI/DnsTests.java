@@ -22,7 +22,7 @@ public class DnsTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Проверка, что при авторизии с неверными емейлом, возникает ошибка")
+    @DisplayName("Проверка, что при авториции с неверными емейлом, возникает ошибка")
     void checkAuthWithWrongEmail() {
         step("Переход к форме авторизации", () ->
                 mainPage.openMainPage()
