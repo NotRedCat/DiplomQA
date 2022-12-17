@@ -38,9 +38,7 @@ public class MainPage extends TestBase {
 
     public MainPage addProductInWishlist() {
         open("/catalog/17a8a05316404e77/planshety/");
-        $$(".catalog-product__name").first().click();
-        sleep(300);
-        $(".button-ui.button-ui_white.button-ui_icon.wishlist-btn").click();
+        $$(".wishlist-btn").first().click();
         return this;
     }
 
@@ -86,7 +84,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage listNoEmpty() {
-        $$("div.suggests presearch__suggests a").shouldBe(CollectionCondition.sizeGreaterThan(0));
+        $$(".suggests.presearch__suggests a").shouldBe(CollectionCondition.sizeGreaterThan(0));
         return this;
     }
 
@@ -97,7 +95,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage clickOnTheLogo() {
-        $(".header-logo").click();
+        $("#header-logo").click();
         return this;
     }
 
