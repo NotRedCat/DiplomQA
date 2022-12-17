@@ -5,6 +5,7 @@ import diplomTests.pages.MainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static diplomTests.testsUI.TestData.aboutCompanyText;
 import static io.qameta.allure.Allure.step;
 
 public class CompanyInfoTests extends TestBase {
@@ -17,6 +18,6 @@ public class CompanyInfoTests extends TestBase {
         step("Открытие страницы 'О компании'", () ->
                 companyInfoPage.openAboutCompany());
         step("Проверка, что на странице есть текст", () ->
-                companyInfoPage.checkingAboutCompanyNoEmpty());
+                companyInfoPage.checkingAboutCompanyNoEmpty(aboutCompanyText));
     }
 }

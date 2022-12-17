@@ -10,9 +10,9 @@ public class CompanyInfoPage {
         return this;
     }
 
-    public CompanyInfoPage checkingAboutCompanyNoEmpty() {
+    public CompanyInfoPage checkingAboutCompanyNoEmpty(String aboutCompanyText) {
         $(".about-dns__top-title")
-                .shouldHave(text("DNS – один из лидеров рынка по продаже цифровой и бытовой техники в России"));
+                .shouldHave(text(aboutCompanyText));
         return this;
     }
 

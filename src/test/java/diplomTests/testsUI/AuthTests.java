@@ -5,7 +5,7 @@ import diplomTests.pages.MainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static diplomTests.testsUI.TestData.email;
+import static diplomTests.testsUI.TestData.invalidEmail;
 import static diplomTests.testsUI.TestData.errAuthText;
 import static io.qameta.allure.Allure.step;
 
@@ -23,7 +23,7 @@ public class AuthTests extends TestBase {
             authPage.goToAuth();
         });
         step("Ввод некорректного емайла", () ->
-                authPage.setEmail(email));
+                authPage.setEmail(invalidEmail));
         step("Проверка, что появилось сообщение об ошибке", () ->
                 authPage.checkingAuthError(errAuthText));
     }

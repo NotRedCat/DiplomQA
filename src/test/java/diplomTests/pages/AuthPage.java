@@ -16,11 +16,11 @@ public class AuthPage {
     public AuthPage setEmail(String email) {
         $(".auth-modal input").click();
         $(".auth-modal input").sendKeys(email);
-        $$(".auth-modal button").find(text("Получить код")).click();
         return this;
     }
 
     public AuthPage checkingAuthError(String errText) {
+        $$(".auth-modal button").find(text("Получить код")).click();
         $(".error-message-block").shouldHave(text(errText));
         return this;
     }
