@@ -1,4 +1,5 @@
 package diplomTests.testsUI;
+import com.github.dockerjava.api.model.Task;
 import diplomTests.pages.MainPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

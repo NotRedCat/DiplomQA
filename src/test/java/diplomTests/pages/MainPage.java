@@ -32,14 +32,14 @@ public class MainPage extends TestBase {
     }
 
     public MainPage checkWishlistIsEmpty() {
-        sleep(1000);
         $(".profile-wishlist__empty-text").shouldHave(text(emptyWishlistText));
         return this;
     }
 
     public MainPage addProductInWishlist() {
         open("/catalog/17a8a05316404e77/planshety/");
-        $$(".wishlist-btn").first().click();
+        sleep(3000);
+        $(".wishlist-btn").hover().click();
         return this;
     }
 
