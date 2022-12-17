@@ -1,17 +1,8 @@
 package diplomTests.testsUI;
-
-import com.codeborne.selenide.Configuration;
-import diplomTests.config.DriverConfig;
 import diplomTests.pages.MainPage;
-import org.aeonbits.owner.Config;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import javax.management.DescriptorRead;
-import java.util.stream.Stream;
-
-import static diplomTests.testsUI.TestData.*;
 import static io.qameta.allure.Allure.step;
 
 public class DnsTests extends TestBase {

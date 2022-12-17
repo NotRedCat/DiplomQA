@@ -1,7 +1,9 @@
 package diplomTests.pages;
 
 import com.codeborne.selenide.CollectionCondition;
+import diplomTests.config.DriverConfig;
 import diplomTests.testsUI.TestBase;
+import org.aeonbits.owner.ConfigFactory;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -9,12 +11,12 @@ import static diplomTests.testsUI.TestData.email;
 import static diplomTests.testsUI.TestData.errAuthText;
 
 public class MainPage extends TestBase {
-
+    String emptyWishlistText = "В списке пока нет ни одного избранного товара";
     private final static String TITLE_TEXT = "Актуальные предложения";
 
-
+    DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
     public MainPage openMainPage() {
-        open("https://www.dns-shop.ru");
+        open(config.getBaseUrl());
         $(".homepage-actual-offers-main__title").shouldHave(text(TITLE_TEXT));
         executeJavaScript("$('.v-confirm-city').remove()");
         executeJavaScript("$('#fixedban').remove()");
@@ -32,20 +34,20 @@ public class MainPage extends TestBase {
     }
 
     public MainPage checkWishlistIsEmpty() {
-        String emptyWishlistText = "В списке пока нет ни одного избранного товара";
         $(".profile-wishlist__empty-text").shouldHave(text(emptyWishlistText));
         return this;
     }
 
     public MainPage addProductInWishlist() {
-        open("https://www.dns-shop.ru/catalog/17a8a05316404e77/planshety/");
+        open("/catalog/17a8a05316404e77/planshety/");
         $$(".catalog-product__name").first().click();
-        $$(".wishlist-btn").first().click();
+        sleep(300);
+        $(".button-ui.wishlist-btn").click();
         return this;
     }
 
     public MainPage checkWishlistIsNotEmpty() {
-        $(".wishlist-link__badge").shouldHave(text("1"));
+        $(".wishlist-link-counter__badge").shouldHave(text("1"));
         return this;
     }
 
@@ -69,7 +71,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage openAboutCompany() {
-        open("https://www.dns-shop.ru/about/about/");
+        open("/about/about/");
         return this;
     }
 
@@ -91,7 +93,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage openSection() {
-        open("https://www.dns-shop.ru/catalog/17aa280216404e77/akkumulyatory-dlya-elektroinstrumentov/");
+        open("/catalog/17aa280216404e77/akkumulyatory-dlya-elektroinstrumentov/");
         executeJavaScript("$('.v-confirm-city').remove()");
         return this;
     }

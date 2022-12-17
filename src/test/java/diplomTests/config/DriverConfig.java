@@ -4,7 +4,7 @@ package diplomTests.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${host}.properties"
+        "classpath:properties/${host}.properties"
 })
 
 public interface DriverConfig extends Config {
@@ -14,7 +14,7 @@ public interface DriverConfig extends Config {
     String getBaseUrl();
 
     @Key("browser")
-    @DefaultValue("CHROME")
+    @DefaultValue("chrome")
     String getBrowser();
 
     @Key("browserVersion")
@@ -22,7 +22,7 @@ public interface DriverConfig extends Config {
     String getBrowserVersion();
 
     @Key("browserSize")
-    @DefaultValue("1500x300")
+    @DefaultValue("1500x700")
     String getBrowserSize();
 
     @Key("remoteUrl")
