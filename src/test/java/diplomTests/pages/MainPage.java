@@ -32,6 +32,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage checkWishlistIsEmpty() {
+        sleep(1000);
         $(".profile-wishlist__empty-text").shouldHave(text(emptyWishlistText));
         return this;
     }
