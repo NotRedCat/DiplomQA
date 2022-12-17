@@ -4,7 +4,7 @@ package diplomTests.config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:${properties}.properties"
+        "classpath:${host}.properties"
 })
 
 public interface DriverConfig extends Config {
