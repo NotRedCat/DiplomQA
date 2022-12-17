@@ -86,7 +86,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage listNoEmpty() {
-        $$(".ui-input-search a").shouldBe(CollectionCondition.sizeGreaterThan(0));
+        $$("div.suggests presearch__suggests a").shouldBe(CollectionCondition.sizeGreaterThan(0));
         return this;
     }
 
@@ -97,7 +97,7 @@ public class MainPage extends TestBase {
     }
 
     public MainPage clickOnTheLogo() {
-        $("header-bottom__logo").click();
+        $(".header-logo").click();
         return this;
     }
 
