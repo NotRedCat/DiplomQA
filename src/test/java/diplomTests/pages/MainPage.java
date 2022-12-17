@@ -26,11 +26,6 @@ public class MainPage extends TestBase {
         return this;
     }
 
-    public MainPage clickWishlist() {
-        $(".wishlist-link__lbl").click();
-        return this;
-    }
-
     public MainPage checkWishlistIsEmpty() {
         $(".profile-wishlist__empty-text").shouldHave(text(emptyWishlistText));
         return this;
