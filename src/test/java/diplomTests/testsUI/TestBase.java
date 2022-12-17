@@ -30,7 +30,6 @@ public class TestBase {
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
         String host = System.getProperty("host");
-        host = "local";
         if (host.equals("remote")) {
             Configuration.remote = config.getRemoteURL();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
