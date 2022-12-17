@@ -91,7 +91,6 @@ public class MainPage extends TestBase {
 
     public MainPage openSection() {
         open("/catalog/17aa280216404e77/akkumulyatory-dlya-elektroinstrumentov/");
-        executeJavaScript("$('.v-confirm-city').remove()");
         return this;
     }
 
