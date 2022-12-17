@@ -18,8 +18,6 @@ public class MainPage extends TestBase {
     public MainPage openMainPage() {
         open(config.getBaseUrl());
         $(".homepage-actual-offers-main__title").shouldHave(text(TITLE_TEXT));
-        executeJavaScript("$('.v-confirm-city').remove()");
-        executeJavaScript("$('#fixedban').remove()");
         return this;
     }
 
