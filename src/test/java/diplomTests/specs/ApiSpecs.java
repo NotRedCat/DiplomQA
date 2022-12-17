@@ -11,10 +11,10 @@ import static diplomTests.helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static org.hamcrest.Matchers.*;
 
-public class TestSpecs {
+public class ApiSpecs {
     public static RequestSpecification testRequestSpec = with()
             .filter(withCustomTemplates())
-            .baseUri("https://reqres.in")
+            .baseUri("https://reqres.in/api")
             .log().body()
             .contentType(ContentType.JSON);
 
@@ -39,6 +39,12 @@ public class TestSpecs {
 
     public static ResponseSpecification testResponseSpec404 = new ResponseSpecBuilder()
             .expectStatusCode(404)
+            .log(LogDetail.STATUS)
+            .log(LogDetail.BODY)
+            .build();
+
+    public static ResponseSpecification testResponseSpec400 = new ResponseSpecBuilder()
+            .expectStatusCode(400)
             .log(LogDetail.STATUS)
             .log(LogDetail.BODY)
             .build();

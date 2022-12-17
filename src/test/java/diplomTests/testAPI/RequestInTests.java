@@ -4,26 +4,25 @@ import models.ResponseLombokModel;
 import models.ResponsePojoModel;
 import models.UserLombokModel;
 import models.UserPojoModel;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static diplomTests.specs.TestSpecs.*;
+import static diplomTests.specs.ApiSpecs.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static io.restassured.RestAssured.*;
-import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.is;
 
 
 public class RequestInTests {
-
     @Test
     @DisplayName("Получение информации о пользователе")
     void singleUserTest() {
         given()
                 .spec(testRequestSpec)
                 .when()
-                .get("/api/users/7")
+                .get("/users/7")
                 .then()
                 .spec(testResponseSpec200)
                 .body("data.first_name", is("Michael"))
@@ -53,11 +52,12 @@ public class RequestInTests {
                 .spec(testRequestSpec)
                 .body(body)
                 .when()
-                .post("/api/users")
+                .post("/users")
                 .then()
                 .spec(testResponseSpec201)
                 .extract()
                 .as(ResponsePojoModel.class);
+        Assertions.assertEquals("Jack", response.getName());
     }
 
     @Disabled
@@ -69,15 +69,12 @@ public class RequestInTests {
     void createEmptyUserTest() {
         String body = "{}";
         given()
-                .log().body()
-                .contentType(JSON)
+                .spec(testRequestSpec)
                 .body(body)
                 .when()
-                .post("https://reqres.in/api/users")
+                .post("/users")
                 .then()
-                .log().status()
-                .log().body()
-                .statusCode(400);
+                .spec(testResponseSpec400);
     }
 
     @Test
@@ -93,7 +90,7 @@ public class RequestInTests {
                 .spec(testRequestSpec)
                 .body(body1)
                 .when()
-                .post("https://reqres.in/api/users")
+                .post("/users")
                 .then()
                 .spec(testResponseSpec201)
                 .extract()
@@ -104,7 +101,7 @@ public class RequestInTests {
                 .spec(testRequestSpec)
                 .body(body2)
                 .when()
-                .put("https://reqres.in/api/user/" + response.getId())
+                .put("/user/" + response.getId())
                 .then()
                 .spec(testResponseSpec200)
                 .extract()
@@ -123,7 +120,7 @@ public class RequestInTests {
                 .spec(testRequestSpec)
                 .body(body)
                 .when()
-                .post("https://reqres.in/api/users")
+                .post("/users")
                 .then()
                 .spec(testResponseSpec201)
                 .extract()
@@ -131,13 +128,13 @@ public class RequestInTests {
         given()
                 .spec(testRequestSpec)
                 .when()
-                .delete("https://reqres.in/api/users/" + response.getId())
+                .delete("/users/" + response.getId())
                 .then()
                 .spec(testResponseSpec204);
         given()
                 .spec(testRequestSpec)
                 .when()
-                .get("https://reqres.in/api/users/" + response.getId())
+                .get("/users/" + response.getId())
                 .then()
                 .spec(testResponseSpec404);
     }
